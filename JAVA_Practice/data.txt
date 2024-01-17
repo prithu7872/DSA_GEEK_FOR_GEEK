@@ -1,0 +1,62 @@
+//commands used for Redirecting and Piping
+
+Using Command Line Arguments ->
+You can use the <, >, and | operators in the command line to achieve input redirection,
+output redirection, and piping, respectively. Here are examples of how you can use these
+operators with Java programs:
+
+Input Redirection (<): To redirect input from a file to your Java program, you can use
+the < operator in the command line. For example:
+
+java YourProgram < input.txt
+In this command, the contents of input.txt will be used as the input for your Java program.
+
+Output Redirection (>): To redirect the output of your Java program to a file, you can use
+the > operator in the command line. For example:
+
+java YourProgram > output.txt
+In this command, the output of your Java program will be written to output.txt.
+
+Piping (|): To pipe the output of one command as the input to your Java program, you can
+use the | operator in the command line. For example:
+
+cat input.txt | java YourProgram
+In this command, the output of the cat command (which displays the contents of input.txt)
+will be used as the input for your Java program.
+
+By using these operators in the command line, you can redirect input from files, redirect the output to files, and pipe the output of other commands as input to your Java program. This provides a flexible way to interact with your Java program from the command line.
+
+
+
+In Java, you can handle input redirection and piping using the standard input/output streams and the `System` class.
+Here's a brief overview of how you can work with input redirection and piping in Java:
+
+1. Input Redirection:
+   - Input redirection allows you to read input from a file instead of the standard input (keyboard).
+   - In Java, you can achieve input redirection by using the `System.setIn` method to set the standard input stream to a file input stream.
+
+   Example:
+
+   File File_name = new File("input.txt");
+   FileInputStream fileInputStream = new FileInputStream(file);
+   System.setIn(fileInputStream); // Redirecting standard input to the file input stream
+   Scanner scanner = new Scanner(System.in);
+   String line = scanner.nextLine(); // Read input from the file
+
+
+2. Piping:
+   - Piping allows you to pass the output of one process as the input to another process.
+   - In Java, you can achieve piping by using the `ProcessBuilder` class to start a new process and connect its input/output streams to the
+   input/output streams of another process.
+
+   Example:
+
+   ProcessBuilder builder = new ProcessBuilder("cat", "input.txt");
+   Process process = builder.start(); // Start the process
+   InputStream inputStream = process.getInputStream(); // Get the input stream of the process
+   Scanner scanner = new Scanner(inputStream);
+   String line = scanner.nextLine(); // Read input from the output of the "cat" command
+
+
+These are basic examples to demonstrate input redirection and piping in Java. Depending on your specific use case, you may need to handle
+error streams, handle multiple processes, and perform more complex interactions between processes.

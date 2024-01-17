@@ -31,11 +31,10 @@ public class Efficient_powers {
  public static int Cal_Power_Iterative(int num,int pow){
         int res = 1;
         while(pow>0){
-            if(num%2!=0) res*=num;
-            pow/=2;
-            res*=res;
+            if(pow%2!=0) res=res*num;
+            pow /= 2;
+            num *=num;
         }
         return res;
-
     }
 }

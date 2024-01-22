@@ -45,12 +45,29 @@ public class Bit_basic_tricks {
         }
         return (1<<(power-1));//calculating 2 the power n..
     }
+    public static int XOR_1_to_n(int n){
+        int num = n;
+        switch(n%4) {
+            case 0:break;
+            case 1:
+                num = 1;
+                break;
+            case 2:
+                num +=  1;
+                break;
+            case 3:
+                num = 0;
+                break;
+        }
+        return num;
+    }
 
     public static void main(String[] args) {
         int num1 = Integer.parseInt(args[0]);
         int num2 = Integer.parseInt(args[1]);
         System.out.println("Is the number "+num1+"a power of 2 : "+checkPower_of_2(num1));
         System.out.println("Most significant bit of number "+num2+" is "+most_significant_bit(num1));
+        System.out.println("XOR of all values from 1 to "+num1+" :"+XOR_1_to_n(num1));
         System.out.println("Multiply by 2 : " + multiply_by_2(num1));
         System.out.println("Divide by 2 : " + divide_by_2(num2));
         System.out.println("Flip Bits : " + flipBits(num1 + num2));

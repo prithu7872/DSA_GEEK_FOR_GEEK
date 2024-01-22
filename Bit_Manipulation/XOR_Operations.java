@@ -3,7 +3,7 @@ public class XOR_Operations {
     int res = 0;
     for (int i = 0; i < n; i++) {
         int r = res;
-        res ^= arr[i];
+        res = res ^ arr[i];
         System.out.println("XOR of "+Integer.toBinaryString(r)+" and "+Integer.toBinaryString(arr[i])+" -> "+res);
     }
     return res;
@@ -14,7 +14,7 @@ public class XOR_Operations {
     }
 
     public static void main(String[] args) {
-        int[] numbers = {2, 2,44, 6, 2 , 6};
+        int[] numbers = {2, 3, 44, 44, 44, 4, 2, 4, 3, 2, 4, 4, 2};
         int oddNumber = findOdd(numbers, numbers.length);
         System.out.println("The odd number is: " + oddNumber);
         System.out.println("The toggled number is : "+toggle_XOR(Integer.parseInt(args[0]),Integer.parseInt(args[1])));

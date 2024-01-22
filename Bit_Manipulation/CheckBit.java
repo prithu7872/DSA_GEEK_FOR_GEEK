@@ -11,7 +11,6 @@ public class CheckBit {
         System.out.println("Is kth bit set : "+ answer);
         boolean answer2 = checkKthBit(n, k);
         System.out.println("Is kth bit set (using String) : "+ answer2);
-
     }
     /**/
     public static boolean checkKthBit(int n, int k)

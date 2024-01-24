@@ -14,7 +14,7 @@ public class count_Set_bits {
         //255 is the largest 8 bit number we are dividing the table of 8bits X 4 parts to check
         //for a 32 bit number
         //now to calculate the set bits of the first 8 bits
-        //since after shifting 24 bits there is bits further left for shifting therefore
+        //since after shifting 24 bits there is no 8 bits further left for shifting therefore
         //we dont use & 255 with this to cancel the other bits except these 8 bits
         return table[n & 255]+table[(n>>8)&255]+table[(n>>16)&255]+table[(n>>24)];
     }
@@ -45,9 +45,10 @@ public class count_Set_bits {
         System.out.println("Count Set bits using normal method : " + countSetbits_basic(num));
         System.out.println("Count Set bits using Brian Kerninghum Algo : " + countSetbits_Brian_Kerninghum_Algo(num));
         initialize();
-        for(int i = 1;i<256;i++) System.out.print(table[i]+" ");
+        int sum = 0;
         System.out.println("\nNo of set bits for number -> "+Setbits+" are :"+countSetbits_tableMethod(Setbits));
-
+        for(int i = 1;i<=num;i++) {sum+=table[i]; System.out.print(table[i]+" ");}
+        System.out.println("Sum ="+ sum);
 
     }
 }

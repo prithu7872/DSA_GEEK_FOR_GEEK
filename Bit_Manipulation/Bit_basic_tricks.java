@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Bit_basic_tricks {
     public static int multiply_by_2(int n) {
         return (n << 1);
@@ -6,7 +8,19 @@ public class Bit_basic_tricks {
     public static int divide_by_2(int n) {
         return (n >> 1);
     }
+    public static int maxConsecutiveOnes(int N) {
 
+        // Your code here
+        int max = 0;
+        int count = 0;
+        while(N>0){
+            if((N&1)==1)count++;
+            else count = 0;
+            if(count>max)max=count;
+            N >>= 1;
+        }
+        return max;
+    }
     public static int flipBits(int x) {
         int value = 0;
         int num = x;
@@ -36,6 +50,37 @@ public class Bit_basic_tricks {
  */
         return (num&(num-1))==0;
     }
+    public static int posOfRightMostDiffBit(int m, int n)
+    {
+            int pos = 0;
+            if (m == n) return -1;
+            int Min_num = Math.min(m, n);
+            int Max_num = Math.max(m,n);
+            while (Max_num > 0) {
+                ++pos;
+                if ((Max_num & 1) != (Min_num & 1)) break;
+                Min_num >>= 1;
+                Max_num >>= 1;
+            }
+        return pos;
+    }
+    public static int countBitsFlip(int a, int b){
+      int XOR_of_a_b = a^b;
+      int bits = 0;
+      while(XOR_of_a_b>0){
+          if((XOR_of_a_b&1)==1)bits+=1;
+          XOR_of_a_b>>=1;
+      }
+      return bits;
+    }
+    public static int swapBits(int n) {
+        // Get all even bits
+        int evenBits = n & 0xAAAAAAAA;
+        // Get all odd bits
+        int oddBits = n & 0x55555555;
+        // Right shift even bits, left shift odd bits, and combine them
+        return (evenBits >> 1) | (oddBits << 1);
+    }
     public static int most_significant_bit(int num) {
         //check its log2(num) value
         int power = 0;
@@ -43,7 +88,7 @@ public class Bit_basic_tricks {
             num >>= 1;//right shifting until num becomes zero
             power++;
         }
-        return (1<<(power-1));//calculating 2 the power n..
+        return power-1;//calculating 2 the power n..
     }
     public static int XOR_1_to_n(int n){
         int num = n;
@@ -61,7 +106,6 @@ public class Bit_basic_tricks {
         }
         return num;
     }
-
     public static void main(String[] args) {
         int num1 = Integer.parseInt(args[0]);
         int num2 = Integer.parseInt(args[1]);
@@ -74,5 +118,10 @@ public class Bit_basic_tricks {
         System.out.println("Before Swapping : num1 = " + num1 + " num2 = " + num2);
         swapNUM(num1, num2);
         System.out.println("After Swapping : num1 = " + num1 + " num2 = " + num2);
+        System.out.println("Position of right-most different bit : " +posOfRightMostDiffBit(num1, num2));
+        System.out.println("Total number of bits needed to be flipped to convert "+num1+" to "+num2+"" +
+                " : "+countBitsFlip(num1,num2));
+        System.out.println("Swap odd and even bits of number "+num1+" : "+swapBits(num1));
+        System.out.println("Max consecutive ones of "+num2+" : "+maxConsecutiveOnes(num2));
     }
 }

@@ -13,18 +13,19 @@ now starting from 00 -> " ";
                   10-> "b";
                   11-> "ab";
      */
-    public static void SetPower(String str){
+    public static void SetPower(String str) {
         int len = str.length(); //str = "ab";
-        int pSize = (1<<len);//4 -> total 4 possible elements
+        int pSize = (1 << len);//4 -> total 4 possible elements
         //first loop that will traverse through all the possible subsets
-        for(int i =0;i<pSize;i++){
+        for (int i = 0; i < pSize; i++) {
             //second loop will travel from 0 to n
-            for(int j = 0;j<len;j++){
-                if((i&(1<<j))!=0) System.out.print(str.charAt(j));
+            for (int j = 0; j < len; j++) {
+                if ((i & (1 << j)) != 0) System.out.print(str.charAt(j));
             }
             System.out.print(" ");
         }
     }
+
     public static void main(String[] args) {
         String str = args[0];
         SetPower(str);

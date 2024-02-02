@@ -117,6 +117,34 @@ public class Bit_basic_tricks {
         }
         return num;
     }
+    public static boolean isSparse(int n)
+    {
+        // A number is said to be a sparse number if no two or more consecutive bits are set in the
+        // binary representation. eg: 3 is not a sparse no while 1 and 2 are sparse;
+        if(n==1||n==2)return true;
+        else return ((n&(n>>1))==0);
+    }
+    public static int greyConverter(int n) {
+     //To convert a decimal number to its Gray code representation, you can follow these steps:
+        //Convert the decimal number to its binary representation.
+        //Perform a bitwise right shift operation on the binary number.
+        //Perform a bitwise XOR operation between the original binary number and the shifted binary number.
+        return n^(n>>1);
+
+    }
+    // function to convert a given Gray equivalent n to Binary equivalent.
+    public static int grayToBinary(int n) {
+        //example given gray number 15 -> its binary is 1 1 1 1 -> converting back to decimal -> 1 0 1 0 -> i.e 10
+        if(n==0)return 0;
+        if(n==1)return 1;
+        // Your code here
+        int mask = n>>1;
+        while(mask!=0){
+            n ^= mask;
+            mask >>= 1;
+        }
+        return n;
+    }
 
     public static void main(String[] args) {
         int num1 = Integer.parseInt(args[0]);
@@ -135,5 +163,10 @@ public class Bit_basic_tricks {
                 " : " + countBitsFlip(num1, num2));
         System.out.println("Swap odd and even bits of number " + num1 + " : " + swapBits(num1));
         System.out.println("Max consecutive ones of " + num2 + " : " + maxConsecutiveOnes(num2));
+        System.out.println("Is "+num1+" a sparse num :"+isSparse(num1));
+        int grey_num = greyConverter(num2);
+        System.out.println("Grey value of "+num2+" is :"+grey_num);
+        System.out.println("Converting the "+grey_num+" back to decimal :"+grayToBinary(grey_num));
+
     }
 }

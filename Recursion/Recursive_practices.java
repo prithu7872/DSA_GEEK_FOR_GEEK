@@ -38,8 +38,19 @@ public class Recursive_practices {
         if(n==0)return 0;
         return sum + n%10 + sum_digits(n/10);
     }
+    static String[] str2 = {"ABC","DEF","GHI"};
+    public static void recurse_char (String[] string,String res,int index,int len){
+        if(index==len){
+            System.out.print(res+" ");
+            return;
+        }
+        int l = string[index].length();
+        for(int i=0;i<l;i++){
+            recurse_char (string,res+string[index].charAt(i),index+1,len);
+        }
+    }
     public static void main(String[] args) {
-         int number = Integer.parseInt(args[0]);
+      /*   int number = Integer.parseInt(args[0]);
          int power = Integer.parseInt(args[1]);
          String str = args[2];
         System.out.println(calculate_power(number, power));
@@ -52,6 +63,7 @@ public class Recursive_practices {
         int k = 1;
         System.out.println("Factorial using tail recursion : "+fact_tail_recursion(power,k));
         System.out.println("String "+str+" is palindrome :"+isPalindrome(str,0,str.length()-1));
-        System.out.println("Sum of digits :"+sum_digits(number));
+        System.out.println("Sum of digits :"+sum_digits(number));*/
+        recurse_char(str2," ",0,3);
     }
 }

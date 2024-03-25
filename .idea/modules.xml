@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/Arrays/Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/GEEK_FOR_GEEK_QUESTIONS.iml" filepath="$PROJECT_DIR$/GEEK_FOR_GEEK_QUESTIONS.iml" />
       <module fileurl="file://$PROJECT_DIR$/Recursion/Recursion.iml" filepath="$PROJECT_DIR$/Recursion/Recursion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Searching/Searching.iml" filepath="$PROJECT_DIR$/Searching/Searching.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Special Questions/Special Questions.iml" filepath="$PROJECT_DIR$/Special Questions/Special Questions.iml" />
     </modules>
   </component>
 </project>

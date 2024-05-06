@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Recursive_practices {
     public static int calculate_power(int num,int pow){
       //base case
@@ -16,6 +17,16 @@ public class Recursive_practices {
       //  lists.add(num);
         recursion_pract(num/2);
         lists.add(num%2);
+    }
+    public String reversePrefix(String word, char ch) {
+        StringBuilder str = new StringBuilder();
+        str.append(ch);
+        int i = 0;
+        while((word.charAt(i) != ch)&& (i<word.length())) {
+            str.append(word.charAt(i));
+            i++;
+        }
+        return (str.reverse()).toString();
     }
     //no tail recursion..
     public static int fact(int num){

@@ -2,31 +2,37 @@ public class Floor_Array {
     // Function to find floor of x
     // arr: input array
     // n is the size of array
-    static int find(long[] arr,int start,int end,long x,int count){
+    static int find2(long[] arr,int start,int end,long x,long max,int pos){
         if(start<=end){
             int mid = (end-start)/2 +start;
-            System.out.println("X :"+x+"Start "+arr[start]+" End : "+arr[end]+" Mid : "+arr[mid]+" Count : "+count);
+            System.out.println("X :"+x+"Start "+arr[start]+" End : "+arr[end]+" Mid : "+arr[mid]+" Max near to x"+max+" Position : "+pos);
+
             if(arr[mid]<=x){
-                count = mid-start + 1;
-                return find(arr,mid+1,end,x,count);
+                if(arr[mid]>max){
+                    max = arr[mid];
+                    pos = mid;
+                }
+                return find2(arr,mid+1,end,x,max,pos);
             }
             else {
-                return find(arr,start,mid-1,x,count);
+                return find2(arr,start,mid-1,x,max,pos);
             }
         }
-        return (count>0?count:-1);
+        return pos;
     }
-
-    static int findFloor(long[] arr, int n, long x){
-        return find(arr,0,n-1,x,0);
+    static int findFloor2(long[] arr, int n, long x){
+        if(x<arr[0])return -1;
+        else if(x>arr[n-1])return n-1;
+        else return find2(arr,0,n-1,x,0,0);
     }
-
-
     public static void main(String[] args) {
-        long[] arr = {1,2,8,10,11,12,19};
-        int n = arr.length;
-        long x = Long.parseLong(args[0]);
-        System.out.println("Floor count : "+findFloor(arr,n,x));
+        int n = Integer.parseInt(args[0]);
+        long x = Long.parseLong(args[1]);
+        long[] arr = new long[n];
+        for(int i = 2; i < n+2; i++) {
+            arr[i-2] = Long.parseLong(args[i]);
+        }
+        System.out.println("Floor count : "+findFloor2(arr,n,x));
     }
 
 }
